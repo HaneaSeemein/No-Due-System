@@ -17,10 +17,7 @@ client.connect(()=>{
   console.log('Connected successfully to server')
   app.get("/", function(req, res){
     // if (loggedin) {
-    res.render("home", {
-        startingContent: homeStartingContent,
-        posts: posts
-      });
+    res.render("index");
     // }
     // else res.redirect("/login");
   });
