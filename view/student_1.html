@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>NO DUES</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="./script_1.js"></script>
+</head>
+<body onload="return show_dues()">
+
+<nav class="navbar navbar-inverse" style="border-radius: 0;">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav" style="padding-left: 20px; padding-right: 20px;">
+      <li><a href="./index.html"> <b>HOME</b> </a></li>
+    </ul>
+    <div class="navbar-header">
+      <a id="student_" class="navbar-brand" style="color:yellow;"> NO DUES | Student </a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="./student_1.html"> Pending Dues </a></li>
+    </ul>
+  </div>
+</nav>
+  
+<div class="container" style="padding-top: 50px;">
+    <h1></h1>
+    <!-- SHOW PENDING DUES -->
+    <form name="reg_std_form" class="form-horizontal" onsubmit="return get_certificate()">
+      <div class="form-group">        
+        <div class="col-sm-offset-2 col-sm-10">
+        </div>
+      </div>
+      <div class="form-group">        
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default"> No Dues Certificate </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
