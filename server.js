@@ -14,6 +14,15 @@ dID=''
 dname=''
 aID=''
 SRN = ''
+function pow(x, y, p){
+  let res = 1;
+  while (y){
+      if (y & 1) res = (res*x)%p;
+      y = y>>1;
+      x = (x*x)%p;
+  }
+  return res;
+}
 let loggedin = false; 
 client.connect(()=>{
   const db = client.db('NO-DUE-SYSTEM');
@@ -70,7 +79,23 @@ client.connect(()=>{
     if(loggedin){
       dues.find({SRN:SRN}).forEach(function(due){
         sdues.push(due)
-      }).then(function(){res.render("student",{dues:sdues})})
+      }).then(function(){
+        if(sdues.length>0){
+          res.render("student",{dues:sdues})
+        }else{
+          today = new Date();
+          today = String(today.getDate()).padStart(2, '0') + '/' + String(today.getMonth() + 1).padStart(2, '0') + '/' + today.getFullYear();
+          digSign = "";
+          n = 3127, d = 2011;
+          for(let i=0; i<SRN.length; i++){
+              var x = pow(SRN.charCodeAt(i), d, n);
+              if((x/1000)<1) digSign +="0";
+              if((x/100)<1) digSign += "0";
+              if((x/10)<1) digSign += "0";
+              digSign += x.toString();
+          }res.render("certificate",{Date:today,SRN:SRN,Dsign:digSign})
+        }
+      })
     }
     else{res.redirect("/")}
   })

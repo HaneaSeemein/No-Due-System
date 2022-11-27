@@ -1,19 +1,52 @@
 <%- include("partials/header_main"); -%>
 
-<h1>NO DUES CERTIFICATE</h1>
-<div class="container" style="padding-top: 50px;">
-    <h1></h1>
-    <form name="reg_std_form" class="form-horizontal" onsubmit="return download_as_pdf()">
-      <div class="form-group">        
-        <div class="col-sm-offset-2 col-sm-10">
+<body>
+  <div class="container d-flex justify-content-center mt-50 mb-50" style="margin-top: 8rem;" id="certificate">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card" id="invoice">
+          <div class="card-header bg-transparent header-elements-inline" style="text-align:center;">
+            <h1 class="card-title text-primary"><b style="color:black;font-family: Times New Roman, Times, serif;"> NO DUES CERTIFICATE </b></h1>
+          </div>
+          <div class="card-body" style="margin-top:5rem;font-size:1.5rem">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="mb-4 pull-left">
+                  <ul class="list list-unstyled mb-0 text-left">
+                    <li> PES University </li>
+                    <li> Bengaluru </li>
+                    <li> support@pesu.pes.edu </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="mb-4 ">
+                  <div class="text-sm-right">
+                    <ul class="list list-unstyled mb-0 text-right">
+                      <li> Date: <span><%= Date %> </span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p style="padding:80px 160px 70px 160px; font-size:2rem; text-align:center;">
+              This is to certify that student with SRN <span id="stSRN"><%= SRN %></span> has no dues towards PES University as of <span id="curDate1"><%= Date %></span>
+            </p>
+          </div>
+        </div>
+        <div class="card-footer"style="margin-top:8rem">
+          <h6> Digital Signature: </h6>
+          <span class="text-muted" id="digSig"><%= Dsign %></span>
         </div>
       </div>
-      <div class="form-group">        
-        <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default"> Download as PDF </button>
-        </div>
-      </div>
-    </form>
+    </div>
   </div>
-
-<%- include("partials/footer"); -%>
+  </div>
+  <div class="container d-flex justify-content-center mt-50 mb-50">
+    <div class="col-md-12 text-right mb-3">
+      <button class="btn btn-primary" style="margin-top:105px; padding:10px 25px 10px 25px" onclick="download_as_pdf()"> Download PDF </button>
+    </div>
+  </div>
+  <%- include("partials/footer"); -%>
