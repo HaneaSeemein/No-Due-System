@@ -1,5 +1,6 @@
 function download_as_pdf(){
     // TODO
+    alert("Downloaded")
     const certificate = document.getElementById("certificate");
     var opt = {
         margin: 1,
