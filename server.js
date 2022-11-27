@@ -22,7 +22,7 @@ client.connect(()=>{
   const Department = db.collection('department')
   const admin = db.collection('administrator')
   // admin.insertOne({ ID: '1111',password: 'owo'})
-  // Department.insertOne({D_ID:"2022BTE",name:"Bio Technology",password:"btbtbt"})
+  // Department.insertOne({D_ID:"22ADO",name:"Adminitrative Office",password:"1111"})
   
   console.log('Connected successfully to server')
   app.get("/", function(req, res){
@@ -106,7 +106,8 @@ client.connect(()=>{
   app.post("/department_update2", function(req, res){
     amountpaid=req.body.paid;
     amountpaid.forEach(function(amount){
-      dues.delete({amount:amount})
+      dues.deleteOne({Amount:amount}).then(function(del){console.log(del)})
+      console.log(amount)
     })
   })
   app.get("/admin", function(req, res){
@@ -124,8 +125,8 @@ client.connect(()=>{
     student.insertOne({SRN:SRN,Name:Name,Password:Password}).then(res.redirect("/admin"));
   })
   app.post("/admin_delete", function(req, res){
-    SRN = req.body.SRN;
-    student.deleteOne({SRN:SRN}).then(res.redirect("/admin"));
+    srn = String(req.body.srn);
+    student.deleteOne({SRN:srn}).then(res.redirect("/admin"));
   })
   app.listen(3000, function() {
     console.log("Server started on port 3000");
