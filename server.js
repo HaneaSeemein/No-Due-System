@@ -117,23 +117,34 @@ client.connect(()=>{
   thedues = [];
   app.post("/department_update", function(req, res){
     SRN=req.body.SRN;
-    dues.find({SRN:SRN,Department:dname}).forEach(function(due){
-      thedues.push(due)
-    }).then(function(){res.redirect("department_update2")})
+    try{
+      dues.find({SRN:SRN,Department:dname}).forEach(function(due){
+        thedues.push(due)
+      }).then(function(){res.redirect("department_update2")})
+    }catch(e){
+      alert("Wrong SRN");
+      res.redirect('/department');
+    }
   })
   app.get("/department_update2", function(req, res){
     if(loggedin){
-     res.render(res.render("department_update2",{dues:thedues,SRN:SRN}));
+     res.render("department_update2",{dues:thedues,SRN:SRN});
      thedues=[]
     }
     else{res.redirect("/")}
   })
   app.post("/department_update2", function(req, res){
     amountpaid=req.body.paid;
-    amountpaid.forEach(function(amount){
-      dues.deleteOne({Amount:amount}).then(function(del){console.log(del)})
-      console.log(amount)
-    })
+    try{
+      amountpaid.forEach(function(amount){
+        dues.deleteOne({Amount:amount}).then(function(del){console.log(del)});
+        console.log(amount);
+      })
+
+    }catch(err){
+      // alert(err.message)
+      res.redirect("/department_update");
+    }
   })
   app.get("/admin", function(req, res){
     if(loggedin){res.render("admin_register")}
@@ -151,7 +162,11 @@ client.connect(()=>{
   })
   app.post("/admin_delete", function(req, res){
     srn = String(req.body.srn);
-    student.deleteOne({SRN:srn}).then(res.redirect("/admin"));
+    try{
+      student.deleteOne({SRN:srn}).then(res.redirect("/admin"));
+    }catch(err){
+      res.redirect('/admin');
+    }
   })
   app.listen(3000, function() {
     console.log("Server started on port 3000");
