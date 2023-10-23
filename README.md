@@ -29,3 +29,15 @@ The No Dues System is a web-based application designed to streamline and automat
 - **Frontend**: HTML, CSS, JavaScript, Bootstrap, ejs
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+## Something funny
+![whatIsThis](https://github.com/HaneaSeemein/No-Due-System/blob/main/Shenanigans.png)
+
+DM or sm to know more XP
